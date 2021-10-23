@@ -12,6 +12,8 @@ type DB struct {
 }
 
 var schema = `
+PRAGMA journal_mode=WAL;
+
 CREATE TABLE IF NOT EXISTS dirty (
   id INTEGER PRIMARY KEY,
   path TEXT,

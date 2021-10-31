@@ -2,19 +2,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    devshell.url = "github:numtide/devshell";
   };
 
-  outputs = { nixpkgs, flake-utils, devshell, ... }:
+  outputs = { nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ devshell.overlay ];
-        };
+        pkgs = import nixpkgs { inherit system; };
       in {
-        devShell = pkgs.devshell.mkShell {
+        devShell = pkgs.mkShell {
           packages = [
+            pkgs.gcc
+            pkgs.glibc.static
             pkgs.go_1_17
             pkgs.goimports
             pkgs.sqlite

@@ -16,6 +16,7 @@
         devShell = pkgs.devshell.mkShell {
           packages = [
             pkgs.go_1_17
+            pkgs.goimports
             pkgs.sqlite
           ];
         };

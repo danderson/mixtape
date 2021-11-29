@@ -1,6 +1,7 @@
 # Mixtape
 
-Backup software for tape users with lots of WORM data.
+Backup software for tape users with lots of WORM data. [Draft
+design](DESIGN.md)
 
 ## License
 

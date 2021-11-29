@@ -6,6 +6,7 @@ import (
 	_ "net/http/pprof"
 	"os"
 	"path/filepath"
+	"time"
 
 	"go.universe.tf/mixtape/db"
 	"go.universe.tf/mixtape/scanner"
@@ -29,6 +30,13 @@ func main() {
 		if err := scanner.Scan(db, os.DirFS("/"), roots); err != nil {
 			log.Print("Error during scan: ", err)
 		}
+
+		log.Print("Updating sums")
+		if err := scanner.Sum(db, os.DirFS("/")); err != nil {
+			log.Print("Error during sum updating: ", err)
+		}
+
+		time.Sleep(10 * time.Second)
 	}
 
 	db.Close()

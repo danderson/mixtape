@@ -15,7 +15,7 @@
             pkgs.glibc.static
             pkgs.go_1_17
             pkgs.goimports
-            pkgs.sqlite
+            pkgs.sqlite-interactive
           ];
         };
       });

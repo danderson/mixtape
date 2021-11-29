@@ -1,2 +1,3 @@
-mixtape.db
-.envrc
+/mixtape
+/mixtape.db*
+/.envrc
